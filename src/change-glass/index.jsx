@@ -2,6 +2,7 @@ import { useState } from "react";
 import Glass from "./glass";
 import data from "./data.json";
 import ShowGlass from "./show-glass";
+import GlassDetails from "./glass-details";
 
 export default function ChangeGlass() {
   const glass = [
@@ -15,12 +16,14 @@ export default function ChangeGlass() {
     { id: 8, url: "/glassesImage/g8.jpg" },
     { id: 9, url: "/glassesImage/g9.jpg" },
   ];
-  const [urlImg, setUrlImg] = useState("");
+
+  const [dataDedails, setDataDedails] = useState("");
 
   const handleChangeUrlGlass = (index) => {
     const glass = data[index];
-    setUrlImg(glass.url);
+    setDataDedails(glass);
   };
+  console.log(dataDedails);
 
   return (
     <div className="bg_ bg-[url('/glassesImage/background.jpg')] bg-cover bg-center w-screen h-screen">
@@ -33,17 +36,20 @@ export default function ChangeGlass() {
       </nav>
 
       <div className="flex justify-center h-60 mt-16 relative">
-        {!!urlImg && <ShowGlass urlImg={urlImg} />}
-        <img
-          className="h-full w-[200px]"
-          src="/glassesImage/model.jpg"
-          alt="model"
-        />
+        <div className="w-[200px] rounded-xl overflow-hidden">
+          {!!dataDedails && <ShowGlass glass={dataDedails} />}
+          <img
+            className="h-full w-[200px]"
+            src="/glassesImage/model.jpg"
+            alt="model"
+          />
+        </div>
       </div>
       <div className="mt-24">
         <p className="text-center text-2xl font-bold mb-5 text-blue-700">
           Choose glass
         </p>
+
         <div className="grid grid-cols-5 gap-5 w-3/5 mx-auto py-2 px-2.5 bg-gray-200 rounded-xl">
           {glass.map((glass, index) => {
             return (
