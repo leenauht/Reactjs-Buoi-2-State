@@ -1,7 +1,6 @@
 import { useState } from "react";
 import Glass from "./glass";
 import data from "./data.json";
-import ShowGlass from "./show-glass";
 import GlassDetails from "./glass-details";
 
 export default function ChangeGlass() {
@@ -37,7 +36,7 @@ export default function ChangeGlass() {
 
       <div className="flex justify-center h-60 mt-16 relative">
         <div className="w-[200px] rounded-xl overflow-hidden">
-          {!!dataDedails && <ShowGlass glass={dataDedails} />}
+          {!!dataDedails && <GlassDetails glass={dataDedails} />}
           <img
             className="h-full w-[200px]"
             src="/glassesImage/model.jpg"
